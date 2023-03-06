@@ -1,0 +1,56 @@
+scalar Time
+
+type Owner {
+  _id: String!
+  name: String!
+  email: String!
+  phone: String!
+}
+
+type Listing {
+  _id: String!
+  ownerId: ID!
+  description: String!
+  location: String!
+  createdAt: Time!
+  status: Status!
+}
+
+enum Status {
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
+}
+
+input FetchOwner {
+  id: String!
+}
+
+input FetchListing {
+  id: String!
+}
+
+input NewOwner {
+  name: String!
+  email: String!
+  phone: String!
+}
+
+input NewListing {
+  ownerId: ID!
+  description: String!
+  location: String!
+  status: Status!
+}
+
+type Query {
+  owners: [Owner!]!
+  listings: [Listing!]!
+  owner(input: FetchOwner): Owner!
+  listing(input: FetchListing): Listing!
+}
+
+type Mutation {
+  createListing(input: NewListing!): Listing!
+  createOwner(input: NewOwner!): Owner!
+}
