@@ -2,7 +2,7 @@
 
 ## Quickstart
 
-* Execute `go run ./server.go` to start GraphQL server
+* `cd` into `cmd/listing-service` and run `make run` to launch GraphQL playground on localhost:8080
 
 ## References
 
